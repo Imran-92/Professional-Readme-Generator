@@ -167,28 +167,33 @@ const userQuestions =[
     },
     {
         type: 'input',
-        name: 'questions',
-        message: 'Please provide an email address for others to reach you with questions.',
-        when: ({ contents }) => {
-            if (contents.indexOf('Questions') > -1) {
-                return true;
-            } else { 
-                return false;
-            }
-        },
-        validate: questionsInput => {
-            if (questionsInput) {
+        name: 'github',
+        message: 'Please enter your GitHub username. (Required)',
+        validate: githubInput => {
+            if (githubInput) {
                 return true;
             } else {
-                console.log('Please provide an email address!');
+                console.log('Please enter your GitHub username!');
                 return false;
             }
         }
     },
     {
         type: 'input',
+        name: 'repo',
+        message: 'Please enter the name of your repo. (Required)',
+        validate: repoInput => {
+            if (repoInput) {
+                return true;
+            } else {
+                console.log('Please enter the name of your repo!')
+            }
+        }
+    },
+    {
+        type: 'input',
         name: 'questions',
-        message: 'Please enter your GitHub username. *',
+        message: 'Please enter your email address. *',
         when: ({ contents }) => {
             if (contents.indexOf('Questions') > -1) {
                 return true;
@@ -200,12 +205,13 @@ const userQuestions =[
             if (githubInput) {
                 return true;
             } else {
-                console.log('Please enter your GitHub username!');
+                console.log('Please enter your email address!');
                 return false;
             }
         }
     },
 ];
+
 
 // function to write README file
 function writeToFile(fileName, data) {
